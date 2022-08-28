@@ -21,4 +21,10 @@ public class CategoriaService {
 		return categoria.orElseThrow(()-> new ObjectNotFoundException("Objeto não encontrado : " + id + ", Tipo :" + Categoria.class.getName()));
 	}
 	
+	
+	public List<Categoria> findAll() {
+		return categoriaRepository.findAll();
+	}
+	
+	
 }
