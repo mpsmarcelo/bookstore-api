@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.marcelo.bookstore.domain.Categoria;
+import com.marcelo.bookstore.dtos.CategoriaDTO;
 import com.marcelo.bookstore.repositories.CategoriaRepository;
 import com.marcelo.bookstore.service.exception.ObjectNotFoundException;
 
@@ -31,6 +32,22 @@ public class CategoriaService {
 	public Categoria save(Categoria categoria) {
 		categoria.setId(null);
 		return categoriaRepository.save(categoria);
+	}
+
+
+	public Categoria update(Integer id, CategoriaDTO categoriaDTO) {
+		Categoria categoria = findById(id);
+		categoria.setDescricao(categoriaDTO.getDescricao());
+		categoria.setNome(categoriaDTO.getNome());
+		return categoriaRepository.save(categoria);
+	}
+
+
+	public void delete(Integer id) {
+		Optional.ofNullable(findById(id)).ifPresent(c -> {
+			categoriaRepository.delete(c);
+		});
+
 	}
 	
 	
