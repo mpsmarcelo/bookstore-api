@@ -2,6 +2,7 @@ package com.marcelo.bookstore.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Supplier;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,15 +26,28 @@ public class LivroService {
 	
 	public Livro findById (Integer id){
 		  Optional<Livro> livro = repository.findById(id);
-		  return livro.orElseThrow(()-> new ObjectNotFoundException("Não foi encontrado nenhum livro para o id : " + id + 
-		  		 " e tipo " + Livro.class.getName()));
+		  return livro.orElseThrow(()-> new ObjectNotFoundException("Não foi encontrado nenhum livro para o id : " + id + " e tipo " + Livro.class.getName()));
 	}
 
 
 	public List<Livro> findAllLivroByCategoria(Integer id_categoria) {
 		categoriaRepository.findById(id_categoria);
 		return repository.findAllLivroByCategoria(id_categoria);
-		
+	}
+
+
+	public Livro update(Integer id, Livro obj) {
+		 Livro livro =  findById(id);
+		 livro = setPropriedadesLivro(livro, obj);
+		 return livro;
+	}
+
+
+	private Livro setPropriedadesLivro(Livro livro, Livro obj) {
+		 livro.setTitulo(obj.getTitulo());
+		 livro.setNome_autor(obj.getNome_autor());
+		 livro.setTexto(obj.getTexto());
+		 return repository.save(livro);
 	}
 	
 	

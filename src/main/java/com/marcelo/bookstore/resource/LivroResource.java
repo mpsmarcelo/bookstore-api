@@ -6,8 +6,12 @@ import java.util.stream.Collectors;
 import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.StreamingHttpOutputMessage.Body;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,5 +40,19 @@ public class LivroResource{
 		List<Livro> lista = service.findAllLivroByCategoria(id_categoria);
 		List<LivroDto> livroDto = lista.stream().map(l-> new LivroDto(l)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(livroDto);
+	}
+	
+	
+	@PutMapping(value = "/{id}")
+	ResponseEntity<Livro> update(@PathVariable Integer id, @RequestBody Livro obj){
+		Livro newLivro = service.update(id, obj);
+		return ResponseEntity.ok().body(newLivro);
+	}
+	
+	
+	@PatchMapping(value = "/{id}")
+	ResponseEntity<Livro> updatePatch(@PathVariable Integer id, @RequestBody Livro obj){
+		Livro newLivro = service.update(id, obj);
+		return ResponseEntity.ok().body(newLivro);
 	}
 }
