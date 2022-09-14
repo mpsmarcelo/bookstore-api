@@ -2,7 +2,7 @@ package com.marcelo.bookstore.dtos;
 
 import com.marcelo.bookstore.domain.Categoria;
 
-public class CategoriaDTO {
+public class CategoriaDto {
 	
 
 	private Integer id;
@@ -10,13 +10,13 @@ public class CategoriaDTO {
 	private String  descricao;
 	
 	
-	public CategoriaDTO() {
+	public CategoriaDto() {
 
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public CategoriaDTO(Categoria categoria) {
+	public CategoriaDto(Categoria categoria) {
 		super();
 		this.id = categoria.getId();
 		this.nome = categoria.getNome();
