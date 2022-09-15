@@ -7,6 +7,7 @@ import java.util.function.Supplier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.marcelo.bookstore.domain.Categoria;
 import com.marcelo.bookstore.domain.Livro;import com.marcelo.bookstore.dtos.LivroDto;
 import com.marcelo.bookstore.repositories.CategoriaRepository;
 import com.marcelo.bookstore.repositories.LivroRepository;
@@ -48,6 +49,13 @@ public class LivroService {
 		 livro.setNome_autor(obj.getNome_autor());
 		 livro.setTexto(obj.getTexto());
 		 return repository.save(livro);
+	}
+
+
+	public Livro create(Integer id_categoria, Livro livro) {
+		livro.setId(null);
+		livro.setCategoria(categoriaRepository.findById(id_categoria).orElse(new Categoria()));
+		return repository.save(livro);
 	}
 	
 	
