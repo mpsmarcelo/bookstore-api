@@ -57,6 +57,13 @@ public class LivroService {
 		livro.setCategoria(categoriaRepository.findById(id_categoria).orElse(new Categoria()));
 		return repository.save(livro);
 	}
+
+
+	public void delete(Integer id) {
+		Optional<Livro> livro = Optional.ofNullable(findById(id));
+		repository.delete(livro.get());
+	    	
+	}
 	
 	
 	
