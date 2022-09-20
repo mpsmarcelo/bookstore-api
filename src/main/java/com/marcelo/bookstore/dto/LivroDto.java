@@ -1,4 +1,4 @@
-package com.marcelo.bookstore.dtos;
+package com.marcelo.bookstore.dto;
 
 import java.io.Serializable;
 

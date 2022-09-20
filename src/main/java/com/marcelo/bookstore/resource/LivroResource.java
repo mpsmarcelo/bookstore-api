@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.marcelo.bookstore.domain.Livro;
-import com.marcelo.bookstore.dtos.LivroDto;
+import com.marcelo.bookstore.dto.LivroDto;
 import com.marcelo.bookstore.service.LivroService;
 @CrossOrigin("*")
 @RestController

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.marcelo.bookstore.domain.Categoria;
-import com.marcelo.bookstore.dtos.CategoriaDto;
+import com.marcelo.bookstore.dto.CategoriaDto;
 import com.marcelo.bookstore.resource.exceptions.DataIntegrityConstraintViolationException;
 import com.marcelo.bookstore.service.CategoriaService;
 
