@@ -20,7 +20,6 @@ public class CategoriaDto {
 	
 	
 	public CategoriaDto() {
-
 		// TODO Auto-generated constructor stub
 	}
 

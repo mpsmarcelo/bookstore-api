@@ -15,6 +15,7 @@ public class LivroDto implements Serializable {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public LivroDto(Livro livro) {
 		super();
 		this.id = livro.getId();
