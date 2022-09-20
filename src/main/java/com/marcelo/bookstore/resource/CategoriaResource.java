@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.marcelo.bookstore.domain.Categoria;
-import com.marcelo.bookstore.dtos.CategoriaDTO;
+import com.marcelo.bookstore.dtos.CategoriaDto;
 import com.marcelo.bookstore.resource.exceptions.DataIntegrityConstraintViolationException;
 import com.marcelo.bookstore.service.CategoriaService;
 
@@ -41,9 +41,9 @@ public class CategoriaResource {
 	
 	
 	@GetMapping()
-	public ResponseEntity<List<CategoriaDTO>> findAll(){
+	public ResponseEntity<List<CategoriaDto>> findAll(){
 		List<Categoria> listCategoria = categoriaService.findAll();
-		List<CategoriaDTO> categoriaDto = listCategoria.stream().map(c -> new CategoriaDTO(c)).collect(Collectors.toList());
+		List<CategoriaDto> categoriaDto = listCategoria.stream().map(c -> new CategoriaDto(c)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(categoriaDto);
 		
 	}
@@ -56,9 +56,9 @@ public class CategoriaResource {
 	}
 	
 	@PutMapping(value= "/{id}")
-	public ResponseEntity<CategoriaDTO> update(@Valid @PathVariable Integer id,   @RequestBody  CategoriaDTO categoriaDTO){
+	public ResponseEntity<CategoriaDto> update(@Valid @PathVariable Integer id,   @RequestBody  CategoriaDto categoriaDTO){
 		Categoria categoria = categoriaService.update(id , categoriaDTO);
-		return ResponseEntity.ok().body(new CategoriaDTO(categoria));
+		return ResponseEntity.ok().body(new CategoriaDto(categoria));
 	}
 	
 	@DeleteMapping(value = "/{id}")
