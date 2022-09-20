@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.marcelo.bookstore.domain.Categoria;
-import com.marcelo.bookstore.domain.Livro;import com.marcelo.bookstore.dtos.LivroDto;
+import com.marcelo.bookstore.domain.Livro;import com.marcelo.bookstore.dtos.LivroDTO;
 import com.marcelo.bookstore.repositories.CategoriaRepository;
 import com.marcelo.bookstore.repositories.LivroRepository;
 import com.marcelo.bookstore.service.exception.ObjectNotFoundException;

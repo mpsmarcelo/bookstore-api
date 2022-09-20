@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.Length;
 
 import com.marcelo.bookstore.domain.Categoria;
 
-public class CategoriaDto {
+public class CategoriaDTO {
 	
 
 	private Integer id;
@@ -19,12 +19,12 @@ public class CategoriaDto {
 	private String  descricao;
 	
 	
-	public CategoriaDto() {
+	public CategoriaDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public CategoriaDto(Categoria categoria) {
+	public CategoriaDTO(Categoria categoria) {
 		super();
 		this.id = categoria.getId();
 		this.nome = categoria.getNome();
