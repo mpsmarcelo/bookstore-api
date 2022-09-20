@@ -4,19 +4,19 @@ import java.io.Serializable;
 
 import com.marcelo.bookstore.domain.Livro;
 
-public class LivroDto implements Serializable {
+public class LivroDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 		
 	private Integer id;
 	private String titulo;
 		
-	public LivroDto() {
+	public LivroDTO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public LivroDto(Livro livro) {
+	public LivroDTO(Livro livro) {
 		super();
 		this.id = livro.getId();
 		this.titulo = livro.getTitulo();
