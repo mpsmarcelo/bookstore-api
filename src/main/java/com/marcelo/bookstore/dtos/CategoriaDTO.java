@@ -23,7 +23,6 @@ public class CategoriaDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-
 	public CategoriaDTO(Categoria categoria) {
 		super();
 		this.id = categoria.getId();
