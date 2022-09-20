@@ -9,6 +9,12 @@ public class StandartError {
 	
 	
 	
+	public StandartError() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public StandartError(Long timetamp, Integer status, String error) {
 		super();
 		this.timetamp = timetamp;

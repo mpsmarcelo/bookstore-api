@@ -1,12 +1,21 @@
 package com.marcelo.bookstore.dtos;
 
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.marcelo.bookstore.domain.Categoria;
 
 public class CategoriaDto {
 	
 
 	private Integer id;
+	@NotEmpty(message = "Campo NOME é obrigatório")
+	@Length(min = 1, max = 50, message = "Campo NOME deve ter de 0 ate 50 caracteres!")
 	private String  nome;
+	
+	@NotEmpty(message = "Campo DESCRIÇÃO é obrigatório")
+	@Length(min = 1, max = 50, message = "Campo DESCRIÇÃO deve ter de 0 ate 100 caracteres!")
 	private String  descricao;
 	
 	

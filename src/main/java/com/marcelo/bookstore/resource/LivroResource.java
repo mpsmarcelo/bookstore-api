@@ -4,10 +4,13 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.StreamingHttpOutputMessage.Body;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -23,7 +26,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.marcelo.bookstore.domain.Livro;
 import com.marcelo.bookstore.dtos.LivroDto;
 import com.marcelo.bookstore.service.LivroService;
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/livros")
 public class LivroResource{
@@ -48,20 +51,20 @@ public class LivroResource{
 	
 	
 	@PutMapping(value = "/{id}")
-	ResponseEntity<Livro> update(@PathVariable Integer id, @RequestBody Livro obj){
+	ResponseEntity<Livro> update(@PathVariable Integer id,@Valid @RequestBody Livro obj){
 		Livro newLivro = service.update(id, obj);
 		return ResponseEntity.ok().body(newLivro);
 	}
 	
 	
 	@PatchMapping(value = "/{id}")
-	ResponseEntity<Livro> updatePatch(@PathVariable Integer id, @RequestBody Livro obj){
+	ResponseEntity<Livro> updatePatch(@PathVariable Integer id,@Valid @RequestBody Livro obj){
 		Livro newLivro = service.update(id, obj);
 		return ResponseEntity.ok().body(newLivro);
 	}
 	
 	@PostMapping
-	ResponseEntity<Livro> create(@RequestParam(value = "categoria", defaultValue =  "0") Integer id_categoria, @RequestBody Livro livro){
+	ResponseEntity<Livro> create(@RequestParam(value = "categoria", defaultValue =  "0") Integer id_categoria,@Valid @RequestBody Livro livro){
 		Livro newObj = service.create(id_categoria, livro);
 		URI uri =  ServletUriComponentsBuilder.fromCurrentContextPath().path("/livros/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).build();

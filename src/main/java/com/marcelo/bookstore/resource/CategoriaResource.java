@@ -4,9 +4,12 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,7 +25,7 @@ import com.marcelo.bookstore.dtos.CategoriaDto;
 import com.marcelo.bookstore.resource.exceptions.DataIntegrityConstraintViolationException;
 import com.marcelo.bookstore.service.CategoriaService;
 
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value="/categoria")
 public class CategoriaResource {
@@ -46,14 +49,14 @@ public class CategoriaResource {
 	}
 	
 	@PostMapping()
-	public ResponseEntity<Categoria> save(@RequestBody Categoria categoria){
+	public ResponseEntity<Categoria> save(@Valid @RequestBody Categoria categoria){
 		 categoria = categoriaService.save(categoria);
 		 URI  uri = ServletUriComponentsBuilder.fromCurrentRequest().path("{/id}").buildAndExpand(categoria.getId()).toUri();
 		return ResponseEntity.created(uri).body(categoria);
 	}
 	
 	@PutMapping(value= "/{id}")
-	public ResponseEntity<CategoriaDto> update(@PathVariable Integer id,   @RequestBody  CategoriaDto categoriaDTO){
+	public ResponseEntity<CategoriaDto> update(@Valid @PathVariable Integer id,   @RequestBody  CategoriaDto categoriaDTO){
 		Categoria categoria = categoriaService.update(id , categoriaDTO);
 		return ResponseEntity.ok().body(new CategoriaDto(categoria));
 	}
