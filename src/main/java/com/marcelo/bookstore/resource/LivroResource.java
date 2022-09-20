@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.marcelo.bookstore.domain.Livro;
-import com.marcelo.bookstore.dtos.LivroDTO;
+import com.marcelo.bookstore.dtos.LivroDto;
 import com.marcelo.bookstore.service.LivroService;
 @CrossOrigin("*")
 @RestController
@@ -43,9 +43,9 @@ public class LivroResource{
 	
 	
 	@GetMapping()
-	ResponseEntity<List<LivroDTO>> findAllLivroByCategoria(@RequestParam(value = "categoria", defaultValue = "0") Integer id_categoria){
+	ResponseEntity<List<LivroDto>> findAllLivroByCategoria(@RequestParam(value = "categoria", defaultValue = "0") Integer id_categoria){
 		List<Livro> lista = service.findAllLivroByCategoria(id_categoria);
-		List<LivroDTO> livroDto = lista.stream().map(l-> new LivroDTO(l)).collect(Collectors.toList());
+		List<LivroDto> livroDto = lista.stream().map(l-> new LivroDto(l)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(livroDto);
 	}
 	
